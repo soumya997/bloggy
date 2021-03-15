@@ -77,9 +77,12 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 defaults:
   -
-     scope:
+    scope:
       path: _posts/en
     values:
       lang: en
-
-
+  -
+    scope:
+      path: _posts/pl
+    values:
+      lang: pl
