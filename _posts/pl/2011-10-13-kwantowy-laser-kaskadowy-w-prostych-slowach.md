@@ -1,0 +1,20 @@
+---
+layout: post
+title: Laser kaskadowy w prostych słowach
+name: qcl-simple-words
+comments: true
+---
+
+Obawiam się, że nie wyjaśniłem czym tak naprawdę są QCL. Spróbuję zrobić to w prostych słowach. Koleżanki i koledzy fizycy: zaciśnijcie zęby i znieście dzielnie wszystkie uproszczenia.
+
+Jedną z najbardziej zadziwiających technologii ostatnich lat jest z pewnością epitaksja z wiązki molekularnej (ang. Molecular Beam Epitaxy). Technika ta pozwala nam na nakładanie niewyobrażalnie cienkich warstw złożonych z pojedynczych pierwiastków, takich jak gal, fosfor czy antymon. Aby wytworzyć podłoże (kanapkę złożoną z tych pierwiastków) odpowiednie dla QCL, potrzeba większej precyzji niż do "normalnych" nanourządzeń. Typowa grubość jednej warstwy takiej kanapki to kilka **nanometrów** (nanometr = jedna miliardowa metra, czyli 10 tysięcy mniej niż średnica erytrocytu lub mnie więcej tyle, ile wynosi średnica DNA), a każda kanapka skłąda się z setek takich warstw!
+
+Dlaczego nie można użyć jednego pierwiastka, zbudować jednolitej struktury i nie martwić się o jej grubość? Tu napisać muszę trochę o zasadach mechaniki kwantowej. Na obrazku poniżej widać wiele prostokątnych kształtów. Są one nazywane, dość intuicyjnie, studniami i barierami. Gdy rozpatrujemy taką studnię, dochodzimy do zaskakującego wyniku: elektrony będące w niej nie mogą przyjmować dowolnych energii, a jedynie pewien dyskretny (skokowy) ich zbiór. Mówimy wtedy, że ich energia jest **skwantowana**. Można to zobaczyć, patrząc na przedłużenia pomarańczowych linii - pokazują one gdzie leżą kolejne stany elektronowe o konkretnych energiach. Jeszcze słowo o wykresie: wysokość barier i głębokość studni to skala energetyczna (jeśli elektron na wykresie "idzie w górę", to zyskuje energię, jeśli w dół, to ją traci), zaś oś pozioma to nasza kanapka - czyli idąc z lewej na prawą, elektron wędruje przez kolejne warstwy kanapki. Dlaczego wykres jest pochylony? Ponieważ do naszej struktury przykładamy napięcie, które pcha nasze nośniki - elektrony - w prawo.
+
+{% include _figure.html src='drawings/3qw-qcl.png' caption='Struktura kaskady kwantowej' %}
+
+Jak elektron przechodzi przez barierę? To dość skomplikowane i nie czuję się kompetenty, by to tutaj wyjaśniać. Przechodzenie przez bariery to kluczowa część projektowania QCL i naukowcy na całym świecie wciąż szukają jak najlepszego sposobu na te przejścia. Można by pomyśleć, że elektrony przeskakują przez barierę, jednak tak nie jest. Wg mechaniki kwantowej, która rządzi nanoświatem, możliwe jest, by przebijały się przez nią **tunelując**. Na schemacie widać górki wychodzące z pomarańczowych i czarnych linii - są to **funkcje falowe** elektronów, matematyczne konstrukcje których używamy do opisu kwantowego świata. Jeśli w jednej studni pokrywają się górki wychodzące z dwóch różnych poziomów, to znaczy że elektron może przejść z jednej studni do drugiej.
+
+Lasery emitują promieniowanie i właśnie po to robimy nasze QCL. W tym wypadku jest ono niskoenergetyczne (niesie 200-400 razy mniej energii niż światło widzialne). W którym momencie jest emitowane? Gdy elektron wędruje w prawo, z każdym przejściem spada w dół, co znaczy że traci część energii. Może ona zostać przekazana najbliższemu otoczeniu nośnika, ale może też zostać wyemitowana w postaci fotonu, czyli promieniowania. Cały proces projektowania dotyczy szerokości studni i barier. Można sobie wyobrazić, jak skomplikowane jest to zadanie, skoro jedna zmienna (szerokość) wpływa na tak wiele parametrów (emitowana energia, mechanizm tunelowania, właściwości termiczne etc.).
+
+Mam nadzieję, że wpis był zrozumiały, nawet jeśli nie zajmujesz się fizyką. Następnym razem napiszę, jak z takiej kanapki zrobić coś, co można podłączyć do prądu i zobaczyć jak działa, pod warunkiem że ma się w pobliżu trochę ciekłego helu.

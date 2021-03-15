@@ -1,0 +1,16 @@
+---
+layout: post
+title: Analiza matematyczna 1 i 2
+name: analiza-matematyczna
+comments: true
+---
+
+Matematyka na pierwszym roku podzielona jest na dwa działy: algebrę i analizę. Ta druga z grubsza zajmuje się kontynuacją nauki o funkcjach z liceum, ale szybko rozszerza ją o rachunek różniczkowy i całkowy. Ja miałem szczęście być ostatnim rocznikiem, który o różniczkach (pochodnych) "musiał" uczyć się w szkole średniej. Teraz pewnie uczą tego tylko w lepszych szkołach i klasach, gdzie nie trzeba równać poziomu zbyt mocno w dół.
+
+Wykłady z Analizy 1 mieliśmy z profesorem Tomaszem Byczkowskim, a ćwiczenia z młodym doktorem, Jackiem Małeckim. Na wykłady zbyt często nie chodziłem, ale pamiętam, że profesor urzekł mnie sposobem pisania całki na tablicy: robił to z takim rozmachem i finezją, że kreda wydawała się różdżką, a on czarodziejem. Ćwiczenia były bardziej wymagające: trzeba było napisać dwa kolokwia, z których suma punktów decydowała o konieczności podejścia do egzaminu, a pan Jacek wcale łatwych zadań nie serwował. Zdobycie 82% punktów z zaliczeń i aktywności - a więc stosunkowo mało - gwarantowało piątkę, co jest niezłym pomysłem na wymuszenie systematyczności wśród studentów.
+
+Analiza 2 była moim zdaniem łatwiejsza, bo koncepcje pochodnych i całek mieliśmy już opanowane, a tutaj były one tylko rozszerzone: na całkę oznaczoną, pochodną funkcji wielu zmiennych czy całki podwójne i potrójne. Jedyną nowością były szeregi liczbowe i badanie ich (ro)zbieżności. Pamiętam pewną myśl, którą przekazał nam ćwiczeniowiec Tomasz Grzywny: _w matematyce, podobnie jak w fizyce, mamy szansę coś osiągnąć (odkryć) do 30-35 roku życia. Oczywiście są wyjątki, ale historia pokazuje, że nasze mózgi  powyżej tego wieku nie są już tak produktywne_.Warto to przemyśleć, jeśli ktoś planuje pracę naukową.
+
+Zdając obydwie Analizy przyjąłem podejście "maturalne": zrobić jak najwięcej zadań, poznać schematy i je zrozumieć, nie martwić się przesadnie o twierdzenia podawane na wykładzie. Myślę zresztą, że celem było właśnie wyrobienie w nas swobody posługiwania się tymi narzędziami matematycznymi, tak wszechobecnymi w fizyce, bo na egzaminie nikt nie kazał wyprowadzać twierdzeń. Wystarczy zaopatrzyć się w książki Gewerta i Skoczylasa (aktywnych jeszcze dydaktyków), w których można znaleźć i twierdzenia, i zadania, i przykładowe kolokwia, poświęcić im 6-10 godzin tygodniowo, a liczenie całek i różniczek wejdzie nam w krew. Jest to jeden z tych przedmiotów, co do przydatności których trudno mieć obiekcje.
+
+Istnieje ciekawa możliwość podwyższenia oceny na celującą: co roku organizowane są specjalne egzaminy, na które mogą przyjść wszyscy, którzy otrzymali wcześniej dobrą ocenę - w 2008 było to chyba 4.5. Zadania z poprzednich lat można obejrzeć [tutaj](http://im.pwr.edu.pl/StudenciCelujace.php). To bardzo dobry pomysł, bo technicznie zadania nie wymagają specjalnego przygotowania, za to zmuszają do wyjścia poza egzaminacyjne schematy i do głębszego zastanowienia się. Po stosunkowo trudnym pierwszym semestrze miło jest wziąć udział w takim niby-konkursie, przypominającym szkolne czasy. Wystarczy rozwiązać 2/4 zadania, by osiągnąć sukces.

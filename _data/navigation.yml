@@ -1,0 +1,18 @@
+en:
+  home:
+    url: "/"
+  journal:
+    title: "posts"
+    url:   "/posts"
+  about:
+    title: "about"
+    url:   "/about/"
+pl:
+  home:
+    url: "/pl"
+  journal:
+    title: "wpisy"
+    url:   "/wpisy/"
+  about:
+    title: "o mnie"
+    url:   "/o-mnie/"

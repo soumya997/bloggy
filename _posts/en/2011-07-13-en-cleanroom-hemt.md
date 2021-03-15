@@ -1,0 +1,14 @@
+---
+layout: post
+title: Cleanroom! (HEMT)
+name: cleanroom-hemt
+comments: true
+---
+
+It is time to write about what I do in the lab, because you would soon conclude that the only thing I am doing here is sightseeing. I am sorry that there are no photos, but you are not encouraged to take a camera with you. Hopefully I will manage to smuggle it once or twice later.
+
+Last Thursday my cleanroom training began. It should have started earlier, but even here sometimes you have to ask a few times before something is done. At first Graham showed me the cleanroom and most of the equipment that I will be using. Then Melanie and Shruti started showing me the processing steps, but only today I got hands-on and began making my first [HEMT](http://en.wikipedia.org/wiki/High_electron_mobility_transistor) (I do not even know how it works yet, but it is only for training purposes, my structures will be different).
+
+Scribing and cleaving is the first step and is relatively easy: all you have to do is a tiny scratch with a diamond scriber parallel to the [100] plane, push it with you finger and watch how the crystal breaks along one line. Then the real fun begins. I prepared the etch (which is H2SO4, [H2O2](http://static.fjcdn.com/pictures/shitty+comic+H202+is+hydrogen+peroxide+I+heard+this+joke_ba98d3_1815730.jpg) and H2O) and left it for some time. The next step is to spin the resist on the sample; we have two resists that result in different thickness but as far as I know I will only be using the thicker one. It is an oil-like magenta liquid in a syringe - you only have to cover the sample with three or four droplets. Spinning creates a thin layer of resist coating (the resist I use is marked 1813, which means the thickness should be around 1.3 microns when span at 5000rpm). Do not ask me what 18 means or what the resist is made of - it is a polymer, that is all I know now and nobody seems to show much interest about its structure. It works.
+
+There are two lithography methods that we use: UV and electron beam, but I do not know if I will have the opportunity to use the latter. You have to choose a mask, position it properly, and do the same with your sample. At the moment, I think that UV lithography is the most difficult part of processing, the reason being the alignment of the mask and the device. It is  relatively easy when you are doing the first pattern - it just has to be aligned with crystallographic planes. However, if you are processing a sample that has already a pattern on it (e.g. evaporating top contact when the bottom ones have been done), it is a meticulous job. Fortunately someone invented alignment marks: little "+" around the pattern that help you. However, I was trying to align one of Shruti's samples on Monday and after 10 minutes I had an impression that it was worse than the initial (quite random) state.

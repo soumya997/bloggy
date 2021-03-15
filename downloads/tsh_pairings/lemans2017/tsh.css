@@ -1,0 +1,1433 @@
+body.scoreboard div,
+body.scoreboard span,
+body.scoreboard td {
+  background-color: transparent;
+  }
+p, h1, h2, h3, th, td, div, span, li { 
+  font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+  }
+h1 {
+  font-size: 120%;
+  font-weight: bold;
+  text-align: center;
+  }
+h2 {
+  font-size: 100%;
+  font-weight: bold;
+  text-align: left;
+  }
+h3 {
+  font-size: 100%;
+  font-style: italic;
+  text-align: left;
+  }
+p.hang { text-indent: -2em; margin-left: 2em; }
+tr, th, td { page-break-inside: avoid; }
+tr.odd { background-color: #e0ffe0; }
+tr.even { }
+td.rank, td.wl, td.spread, td.sum, td.rating, td.score, td.thai {
+  font-family: monospace;
+  }
+td.class, th.class, td.round, th.round {
+  text-align: center;
+  }
+.rank, .rating, .score, .spread, .sum, td.thai, th.thai {
+  text-align: right;
+  }
+.table { 
+  text-align: center;
+  }
+.board, .pclass { 
+  text-align: center;
+  }
+.wl { 
+  text-align: center;
+  white-space: nowrap;
+  }
+.last,
+.next,
+.oppname,
+.team,
+.name {
+  text-align: left;
+  }
+/* begin blinking scoreboard */
+.alt0 .last, .alt1 .next { display: none; }
+.alt0 .last.nonext, .alt1 .next.nolast { display: inline; }
+/* end blinking scoreboard */
+body.absp .board { display: none; }
+.rating {
+/* display: none;  */
+  }
+.wins { 
+  text-align: center;
+  }
+td.owner {
+  font-size: 80%;
+  }
+td.team {
+  font-size: 60%;
+  white-space: nowrap;
+  }
+body.roto p.notice { font-size: 60%; }
+table.roto td { padding: 0 .5em; }
+td {
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  }
+th {
+  padding: 0.2em 0.5em 0.5em 0.5em;
+  }
+body.wallchart td.name { white-space: nowrap; }
+body.wallchart td.loss, 
+body.wallchart td.tie, 
+body.wallchart td.win, 
+body.wallchart td.bye, 
+body.wallchart td.empty {
+  white-space: nowrap;
+}
+body.wallchart td.win {
+  background-color: #c0c0ff;
+  }
+body.wallchart td.loss {
+  background-color: white;
+  }
+body.wallchart td.tie {
+  background-color: #c0ffc0;
+  }
+body.wallchart td.bye {
+  background-color: #c080ff;
+  }
+body.wallchart td.empty {
+  background-color: white;
+  }
+body.wallchart div.opp {
+  text-align: center;
+  font-size: 75%;
+  }
+body.wallchart td { padding: 2px; }
+body.wallchart div.score,
+body.wallchart div.record,
+body.wallchart div.spread {
+  text-align: center;
+  font-family: monospace;
+  font-size: 80%;
+  }
+@media print {
+  body.wallchart table { border-collapse: collapse; }
+  body.wallchart td { border: 1px solid black; }
+  a, a:link, a:visited { text-decoration: none; color: black; }
+  p.backref { display: none; }
+  .noprint { display: none; }
+  }
+@media screen {
+  table.noscreenhead tr.top1 th
+  { display: none; }
+  }
+/* span.starts { color: red; } */
+/* span.starts { display: none; } */
+span.starts { white-space: nowrap; }
+p.notice {
+  text-align: center;
+  font-size: 70%;
+  }
+/* virtual CSC */
+table.scorecard td {
+  padding: 0.1em 0.1em;
+  margin: 0;
+  }
+table.scorecard th {
+  padding: 0.1em 0.5em;
+  margin: 0;
+  }
+table.scorecard td, table.scorecard th {
+  border: solid black 1pt;
+  }
+table.scorecard tr.top1 td, table.scorecard tr.top1 th {
+  border-top: solid black 2pt;
+  }
+table.scorecard tr.top1 { font-size: 125%; }
+table.scorecard tr.top1 td { text-align: center; }
+table.scorecard tr.top1 .number 
+  { font-size: 200%; border-right: none; }
+table.scorecard tr.top1 .name span.label 
+  { display: none; }
+table.scorecard tr.top1 .name 
+  { border-left: none; border-right: none; }
+table.scorecard tr.top1 .rating {
+  font-family: Arial, Helvetica, sans-serif;
+  border-left: none;
+  padding-right: 0.5em;
+  }
+table.scorecard tr.top1 .number,
+table.scorecard th.round,
+table.scorecard td.p12,
+table.scorecard td.round {
+  border-left: black solid 2px;
+  }
+table.scorecard tr.top1 .rating,
+table.scorecard th.spread,
+table.scorecard td.spread,
+table.scorecard td.cume,
+table.scorecard td.cume2
+  {
+  border-right: black solid 2px; 
+  }
+table.scorecard td.cume2
+  {
+  border-left: black solid 1px; 
+  }
+table.scorecard td.round {
+  text-align: center;
+  font-size: 150%;
+  border-bottom: none;
+  padding-bottom: 0;
+  }
+table.scorecard td.p12 {
+  text-align: center;
+  font-size: 80%;
+  border-top: none;
+  padding-top: 0;
+  }
+body.gui .tshWidgetBoolean,
+body.gui .tshWidgetEnum,
+body.gui .tshWidgetHash,
+body.gui .tshWidgetHashPair,
+body.gui .tshWidgetHashPair > div,
+body.gui .tshWidgetHashPairKey,
+body.gui .tshWidgetHashPairValue,
+body.gui .tshWidgetInteger,
+body.gui .tshWidgetString
+  { display: inline; }
+body.gui .config .error { background-color: #FF8080; color: black; padding: 0 0.5em; }
+body.gui .config .hidden-error { display: none; }
+body.gui div#gui_content { width: 320px; }
+body.gui img { border: none; }
+body.gui table.scorecard td.round {
+  border-bottom: 1px solid black;
+  }
+@media print {
+  body.gui table.scorecard tr.top1 th.number img {
+    height: 0.8em;
+    width: 0.8em;
+    float: right;
+    }
+  body.gui table.scorecard td.round div.context {
+    position: relative;
+    font-size: 80%;
+    width: 6em;
+    height: 1em;
+    }
+  body.gui table.scorecard td.round div.round {
+    text-align: center;
+    position: absolute;
+    top: 0em;
+    left: 0em;
+    width: 2em;
+    }
+  body.gui table.scorecard td.round div.p12 {
+    text-align: center;
+    position: absolute;
+    font-size: 80%;
+    top: 0em;
+    left: 2em;
+    width: 6em;
+    }
+  body.gui table.scorecard td.onam img {
+    height: 1.25em;
+    width: 1.25em;
+    }
+  body.gui table.scorecard td.spread div.context {
+    text-align: center;
+    }
+  body.gui table.scorecard td.spread div.spread {
+    display: inline;
+    }
+  body.gui table.scorecard td.spread div.cume:before {
+    content: " = ";
+    }
+  body.gui table.scorecard td.spread div.cume {
+    display: inline;
+    }
+  }
+@media screen {
+  body.gui table.scorecard tr.top1 th.number img {
+    height: 1.25em;
+    width: 1.25em;
+    float: right;
+    }
+  body.gui table.scorecard th.round {
+    width: 3.2em;
+    }
+  body.gui table.scorecard td.round div.context {
+    position: relative;
+    font-size: 80%;
+    height: 2.5em;
+    width: 4em;
+    }
+  body.gui table.scorecard td.round div.round {
+    text-align: center;
+    position: absolute;
+    top: 0em;
+    height: 1.5em;
+    left: 0em;
+    width: 4em;
+    }
+  body.gui table.scorecard td.round div.p12 {
+    text-align: center;
+    position: absolute;
+    font-size: 80%;
+    top: 1.5em;
+    left: 0em;
+    width: 5em;
+    }
+  body.gui table.scorecard td.onam img {
+    height: 2.5em;
+    width: 2.5em;
+    float: left;
+    }
+  body.gui table.scorecard td.spread div.context {
+    position: relative;
+    height: 2.5em;
+    width: 4em;
+    }
+  body.gui table.scorecard td.spread div.spread {
+    text-align: center;
+    position: absolute;
+    top: 0em;
+    height: 1.5em;
+    left: 0em;
+    width: 4em;
+    }
+  body.gui table.scorecard td.spread div.cume:before {
+    content: " = ";
+    }
+  body.gui table.scorecard td.spread div.cume {
+    text-align: center;
+    position: absolute;
+    font-size: 80%;
+    top: 1.5em;
+    left: 0em;
+    width: 5em;
+    }
+  }
+body.gui table.scorecard td.round div.p12 span.y {
+  border: 1px solid black;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em;
+  }
+body.gui table.scorecard td.round div.p12 span.n {
+  text-decoration: line-through;
+  }
+table.scorecard td.board,
+table.scorecard td.table,
+table.scorecard td.seat,
+table.scorecard td.for,
+table.scorecard td.against,
+table.scorecard td.won,
+table.scorecard td.lost,
+table.scorecard td.onum,
+table.scorecard td.orat {
+  font-size: 120%;
+  text-align: center;
+  }
+table.scorecard td.onam {
+  text-align: left;
+  padding-left: 0.25em;
+  }
+table.scorecard td.won, table.scorecard th.won,
+table.scorecard td.lost, table.scorecard th.lost {
+  width: 24pt;
+  }
+table.scorecard td.for, table.scorecard th.for,
+table.scorecard td.against, table.scorecard th.against {
+  width: 48pt;
+  }
+table.scorecard td.cumelabel {
+  border-right: none;
+  padding-left: 0.25em;
+  }
+table.scorecard td.cumelabel span.label {
+  font-size: 75%;
+  }
+table.scorecard span.strut {
+  font-size: 120%;
+  }
+body.gui table.scorecard th.spread {
+  text-align: center; 
+  }
+body.gui table.scorecard tr.round1 td.spread {
+  text-align: center; 
+  padding-left: 1em;
+  }
+table.scorecard tr.round1 td.spread,
+table.scorecard td.cume,
+table.scorecard td.cume2 
+  {
+  text-align: right;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-right: 1em;
+  /* can't use relative measure here due to unidentified Safari bug */
+  font-size: 12pt; 
+  }
+table.scorecard td.cume {
+  border-left: none;
+  }
+table.scorecard tr.bottom td {
+  border-left: none;
+  border-bottom: none;
+  border-right: none;
+  font-size: 3px;
+  }
+body.ratings table, body.ratings h1 { font-size: 90%; }
+table.handicaps th, table.handicaps td,
+table.ratings th, table.ratings td {
+  font-size: 100%;
+  line-height: 90%;
+  margin: 0;
+  }
+table.ratings th.last,
+table.ratings th.next,
+table.ratings th.pclass,
+table.ratings th.rank,
+table.ratings th.wl {
+  font-size: 70%;
+  }
+table.ratings th.thai,
+table.ratings th.sum,
+table.ratings th.spread {
+  font-size: 60%;
+  }
+table.ratings th.rating {
+  font-size: 50%;
+  }
+table.ratings th.pclass {
+  font-size: 70%;
+  }
+table.ratings th.last,
+table.ratings th.name,
+table.ratings th.oppname,
+table.ratings td.last,
+table.ratings td.name,
+table.ratings td.oppname {
+  padding: 0.1em 0.2em;
+  }
+table.ratings td.last {
+  white-space: nowrap;
+  }
+/* multipair */
+body.multipair td, body.multipair th { text-align: center; }
+body.multipair td.name, body.multipair th.name { text-align: left; }
+body.multipair tr.subhead th,
+body.multipair th.opp,
+body.multipair th.p12,
+body.multipair th.board,
+body.multipair th.table
+{ font-size: 70%; padding-top: 0; }
+body.multipair td.opp, body.multipair th.opp 
+  { text-align: right; padding-right: 0.25em; }
+body.multipair td.board, body.multipair th.board 
+  { text-align: left; padding-left: 0.25em; }
+body.multipair td.p12 { text-align: center; }
+/* alpha pair */
+body.pairings, body.alpha_pairings h1 
+  { margin-bottom: 0.4em; font-size: 100%; }
+body.pairings table.pairings th,
+body.alpha_pairings table.alpha_pairings th 
+  { font-size: 90%; padding-bottom: 0.25em;}
+body.pairings .notice, body.alpha_pairings .notice { display: none; }
+table.pairings, table.alpha_pairings {
+  padding: 0.2em 0.5em;
+  }
+table.pairings th, table.pairings td,
+table.alpha_pairings th, table.alpha_pairings td {
+  font-size: 100%;
+  line-height: 90%;
+  padding: 0.2em 0.5em; 
+  margin: 0;
+  }
+table.alpha_pairings span.repeat {
+  display: block;
+  font-size: 80%;
+  color: red;
+  }
+table.pairings span.repeat {
+  color: red;
+  }
+table.pairings th, table.pairings td,
+table.alpha_pairings th, table.alpha_pairings td 
+  { border-bottom: 1px dotted gray; }
+table.pairings td.table,
+table.alpha_pairings td.table 
+  { border-left: 1px dotted gray; }
+table.pairings td.left,
+table.alpha_pairings td.left 
+  { border-left: 1px dotted gray; }
+table.pairings td.midright, 
+table.pairings td.right,
+table.alpha_pairings td.midright, 
+table.alpha_pairings td.right 
+  { border-right: 1px dotted gray; }
+/* prizes */
+table.prizes th { border-bottom: 3pt double black; }
+table.prizes td { border-bottom: 1pt solid black; margin: 0; padding: 0.25em 0.25em 0.25em 0.25em; font-size: 120%; page-break-inside: avoid; vertical-align: top;  border-right: 1pt dotted black; }
+table.prizes td.number { border-left: 1pt dotted black; text-align: center; width: 3em; }
+table.prizes td.description { width: 15em; }
+/* table.prizes td.value { width: 5em; text-align: right; } */
+table.prizes td.value { text-align: right; }
+table.prizes td.winner { width: 25em; }
+body.scores td { border-top: 1px dotted black; }
+/* scoreboard */
+body.enhanced.scoreboard { padding: 0; margin: 0;}
+body.enhanced.scoreboard .notice { display: none; }
+body.scoreboard .nosb { display: none; }
+body.scoreboard { margin-top: 0; }
+body.scoreboard p.noprint,
+body.scoreboard p.backref,
+body.scoreboard h1,
+body.scoreboard h2
+  { display: none; }
+body.scoreboard {
+  background-color: #202040;
+  color: white;
+  }
+body.scoreboard div.wlb {
+  float:left;
+  text-align: center;
+  margin-bottom: 0.25em;
+  background-color: yellow;
+  border-top: 1px yellow solid;
+  border-bottom: 1px yellow solid;
+  margin-left: 0.5em;
+}
+body.scoreboard div.wlb div.w {
+  background-color: #c0FFc0;
+/*  margin-bottom: 0.25em; */
+  color: black;
+  }
+body.scoreboard div.wlb div.l {
+  background-color: #FFc0c0;
+  color: black;
+  }
+body.scoreboard div.wlb.money {
+  color: black;
+}
+body.scoreboard div#sb {
+  position: relative;
+  width: 99%;
+  height: 99%;
+  }
+body.scoreboard div.MSF_container_16 div#sb {
+  position: absolute;
+  left: 0px;
+}
+.sbctl { 
+  white-space: nowrap;
+  position: absolute;
+  height: 20px;
+  left: 0;
+  font-size: 70%;
+  padding-left: 4px;
+  }
+.sbctl a {
+  color: white;
+  background-color: #4040c0;
+  text-decoration: none;
+  padding: 2px;
+  }
+.sbctl #error {
+  font-style: italic; color: #FFFFC0;
+  }
+body.scoreboard .old span.ordinal_affix { font-size: 80%; }
+body.scoreboard span.ordinal_affix { font-size: 50%; }
+body.scoreboard div.head {
+  position: relative;
+  }
+body.scoreboard div.head span.team{
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  font-weight: bold;
+  font-size: 80%;
+  color: white;
+  padding-bottom: 0.25em;
+  padding-right: 0.25em;
+/*
+  background-color: black; // only for T/M?
+*/
+  }
+body.scoreboard div.sbp.compact span.team {
+  padding: 0 0.25em 0 0;
+  }
+body.scoreboard div.sbp {
+  overflow: hidden;
+  }
+body.scoreboard div.sbp td {
+  padding: 0;
+  vertical-align: top;
+  }
+body.scoreboard div.sbp div.head {
+  clear: both;
+  }
+body.scoreboard div.sbp div.head span.team img {
+  border-top: 1px #600000 solid;
+  border-left: 1px #600000 solid;
+  padding-left: 0.25em;
+  }
+body.scoreboard div.sbp.money div.head span.team img {
+  border-top: 1px #006000 solid;
+  border-left: 1px #006000 solid;
+  padding-left: 0.25em;
+  }
+body.scoreboard div.sbp.nomoney div.head span.team img {
+  border-top: 1px #000060 solid;
+  border-left: 1px #000060 solid;
+  padding-left: 0.25em;
+  }
+body.scoreboard div.sbp.money {
+  border: 1px solid #00c000;
+}
+/* keep IE happy with following */
+table.scoreboard div.sbp div.money {
+  border: none;
+}
+body.scoreboard div.sbp.nomoney {
+  border: 1px solid #0000c0;
+}
+body.scoreboard div.sbp {
+  border: 1px solid #c00000;
+}
+body.scoreboard div.sbp {
+  float:left;
+  color:white;
+  margin-left: 0.2em;
+  margin-bottom: 0.25em;
+  position: relative;
+  z-index: 0;
+}
+body.scoreboard table.scoreboard div.sbp.compact {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+body.scoreboard div.sbp.leader {
+  margin-left: 0.5em;
+  }
+body.scoreboard div.sbp {
+  background-color: #400000;
+}
+body.scoreboard div.sbp.money {
+  background-color: #004000;
+}
+body.scoreboard div.sbp.nomoney {
+  background-color: #000040;
+}
+body.scoreboard div.sbp .me {
+  margin-right: 0.25em;
+  }
+body.scoreboard div.sbp .me,
+body.scoreboard div.sbp .opp {
+  float:left;
+  }
+/* omitting the table below causes IE to fail */
+body.scoreboard div.sbp.money table .me {
+  background-color: #006000;
+  }
+body.scoreboard div.sbp.money table .opp {
+  background-color: #206020;
+  }
+body.scoreboard div.sbp.nomoney table .me {
+  background-color: #000060;
+  }
+body.scoreboard div.sbp.nomoney table .opp {
+  background-color: #202060;
+  }
+body.scoreboard div.sbp .me {
+  background-color: #600000;
+  }
+body.scoreboard div.sbp .opp {
+  background-color: #602020;
+  }
+body.scoreboard table div.sbp.compact.money .opp {
+  background-color: #206020;
+  }
+body.scoreboard div.sbp .me .rank,
+body.scoreboard div.sbp .me .newr {
+  text-align: left;
+  padding-top: 0.25em;
+  padding-bottom: 0;
+  float:left;
+}
+body.scoreboard div.sbp .me .rank {
+  font-size: 120%;
+}
+body.scoreboard div.sbp .me .old { padding-left: 0.25em; }
+body.scoreboard div.sbp .me .oldr,
+body.scoreboard div.sbp .me .handicap,
+body.scoreboard div.sbp .me .old {
+  font-size: 50%;
+}
+body.scoreboard div.sbp .me .money,
+body.scoreboard div.sbp .me .oldr,
+body.scoreboard div.sbp .me .handicap,
+body.scoreboard div.sbp .me .old {
+  float:left;
+}
+body.scoreboard div.sbp.nomoney .me .handicap {
+  background-color: #000040;
+  border-right: 1px #c0c0ff solid;
+}
+body.scoreboard div.sbp.money .me .handicap {
+  background-color: #004000;
+  border-right: 1px #c0ffc0 solid;
+}
+body.scoreboard div.sbp .me .handicap {
+  background-color: #400000;
+  border-right: 1px #ffc0c0 solid;
+  padding-left: 1px;
+  padding-right: 1px;
+}
+body.scoreboard div.sbp .me .handicap .label {
+  color: yellow;
+}
+body.scoreboard div.sbp .me .money {
+  padding-left: 0.25em;
+}
+body.scoreboard div.sbp .me .wl {
+  float: left;
+  font-size: 80%;
+}
+body.scoreboard table.scoreboard.sudoku div.sbp .me .wl {
+  display: inline;
+  padding-left: 0.5em;
+  font-size: 120%;
+}
+body.enhanced.scoreboard table.scoreboard div.sbp.compact > div {
+  display: block;
+  float: left;
+  overflow: hidden;
+  font-size: 100%;
+  padding: 0.25em;
+  }
+/*
+body.scoreboard table.scoreboard div.sbp .opp .next .bye,
+body.scoreboard table.scoreboard div.sbp .opp .where {
+  clear: none;
+}
+  */
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.rank {
+  width: 2em;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.wl {
+  width: 9em;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.head {
+  width: 8em;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.name {
+  width: 15em;
+  vertical-align: top;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.rating {
+  width: 6em;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact div.opp {
+  width: 32em;
+  }
+body.enhanced.scoreboard table.scoreboard div.sbp.compact .name .given,
+body.enhanced.scoreboard table.scoreboard div.sbp.compact .name .end_id,
+body.enhanced.scoreboard table.scoreboard div.sbp.compact .name .surname {
+  display: inline;
+  vertical-align: top;
+  clear: none;
+}
+body.enhanced.scoreboard table.scoreboard div.sbp.compact .name .given:after,
+body.enhanced.scoreboard table.scoreboard div.sbp.compact .name .surname:after {
+  content: " ";
+}
+body.enhanced.scoreboard div.ESBMessageClass { position:absolute; font-size:  48px;  white-space: pre-wrap;  z-index: 2; float:left; width: 800px; text-align: center }
+body.scoreboard table.scoreboard div.sbp.compact .opp .next > div {
+  display: block;
+  float: left;
+  overflow: hidden;
+  font-size: 100%;
+  padding: 0.25em;
+}
+body.scoreboard table.scoreboard div.sbp.compact .opp .title {
+  width: 3em;
+  }
+body.scoreboard table.scoreboard div.sbp.compact .opp .where {
+  width: 5em;
+  }
+body.scoreboard table.scoreboard div.sbp.compact .opp .repeats {
+  width: 3em;
+  }
+body.scoreboard table.scoreboard div.sbp.compact .opp .hs {
+  width: 15em;
+  }
+body.scoreboard div.sbp .me img.head {
+  z-index: 1;
+  padding: 0 0.25em 0.25em 0.25em;
+}
+body.scoreboard div.sbp .me .name span {
+  color: yellow;
+}
+body.scoreboard div.sbp .me .name {
+  font-size: 70%;
+}
+body.scoreboard div.sbp .name .given,
+body.scoreboard div.sbp .name .surname {
+  display: block;
+  clear: both;
+}
+body.scoreboard div.sbp .opp {
+  font-size: 70%;
+}
+body.scoreboard div.sbp .opp .title {
+  clear: both;
+  color: yellow;
+  float: left;
+}
+body.scoreboard div.sbp .opp .repeats {
+  color: red;
+  float: left;
+  padding-left: 0.25em;
+}
+body.scoreboard div.sbp .opp .next .bye,
+body.scoreboard div.sbp .opp .where {
+  clear: both;
+}
+body.scoreboard div.sbp.nomoney .opp .title {
+  background-color: #000040;
+}
+body.scoreboard div.sbp.money .opp .title {
+  background-color: #004000;
+}
+body.scoreboard div.sbp .opp .title {
+  background-color: #400000;
+}
+body.scoreboard table div.sbp div.name img.head {
+  z-index: 1;
+  padding: 0 0 0 0.25em;
+}
+body.scoreboard div.sbp .opp img.head {
+  z-index: 1;
+  padding-right: 0.25em;
+  padding-bottom: 0.25em;
+}
+body.scoreboard div.last div.oldrk,
+body.scoreboard div.sbp .opp .hs .head,
+body.scoreboard div.sbp .opp .hs .name {
+  float:left;
+}
+body.scoreboard div.record {
+  clear: both;
+}
+body.scoreboard div.record div.title {
+  float: none;
+}
+body.scoreboard div.record div.rdss {
+  float: left;
+  position: relative;
+}
+body.scoreboard div.record div.rds {
+  float: none;
+}
+body.scoreboard div.record div.rd {
+  color: black;
+  float: left;
+}
+body.scoreboard div.record div.rd div {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 110%;
+}
+body.scoreboard div.sbp div.record .bye,
+body.scoreboard div.sbp div.record .win {
+  background-color: #c0FFc0;
+}
+body.scoreboard div.sbp div.record .tie {
+  background-color: #c0c0c0;
+}
+body.scoreboard div.sbp div.record .forfeit,
+body.scoreboard div.sbp div.record .loss {
+  background-color: #FFc0c0;
+}
+body.scoreboard div.record div div {
+  float:none;
+  text-align: center;
+}
+body.scoreboard div.record .rd .p0 {
+  color: white;
+  background-color: #600000;
+  padding-top: 0.25em;
+}
+body.scoreboard div.record .rd .p1 {
+  color: black;
+  background-color: #808080;
+  padding-top: 0.25em;
+}
+body.scoreboard div.record .rd .p2 {
+  color: white;
+  background-color: black;
+  padding-top: 0.25em;
+}
+span.narrow {
+  font-stretch: ultra-condensed;
+}
+body.scoreboard .last .bye,
+body.scoreboard .gs,
+body.scoreboard .gsn {
+  clear:both;
+}
+body.scoreboard .gsn {
+  background-color: red;
+  color: black;
+}
+body.scoreboard div.noprint { display: none; }
+
+body.rosters .team {
+  font-size: 100%;
+}
+body.rosters .player {
+  text-align: left;
+}
+
+table.tally_slips {
+  width: 100%;
+  page-break-inside: avoid;
+  border-collapse: collapse;
+  }
+table.tally_slips tr.row2 td.skip {
+  width: 36pt;
+  }
+table.tally_slips td.p12 {
+  width: 36pt;
+  padding: 0.25em;
+  font-size: 90%;
+  }
+table.tally_slips td.player {
+  width: 40%;
+  padding: 0.25em;
+  font-size: 90%;
+  }
+table.tally_slips td.ident {
+  font-size: 80%;
+  }
+table.tally_slips th {
+  font-size: 70%;
+  }
+table.tally_slips td.initials,
+table.tally_slips td.score,
+table.tally_slips td.spread {
+  border: solid 1pt black;
+  width: 48pt;
+  height: 24pt;
+  }
+body.pol table.tally_slips td.player {
+  width: 25%;
+  }
+body.pol table.tally_slips td.initials {
+  width: 288pt;
+  }
+
+/* tsh GUI server stuff */
+body.gui { font-family: Goudy, Garamond, "Adobe Garamond", Palatino, Times, serif }
+body.gui div.navbar {
+  /* 2c9fda, bbe0f3 */
+  background-color: #bbe0f3;
+  margin-bottom: 2px;
+  padding-bottom: 6px;
+  padding: 6px;
+  border-top: 3px double black;
+  border-bottom: 3px double black;
+  }
+body.gui div.navbar div.seclist {
+  border-top: 1px dotted #2c9fda;
+  margin-top: 6px;
+  padding-top: 6px;
+  }
+body.gui div.navbar div.seclist a:hover,
+body.gui div.navbar div.seclist a:link,
+body.gui div.navbar div.seclist a:visited,
+body.gui div.navbar div.seclist span.inactive,
+body.gui div.navbar div.seclist span.here {
+  border: 1px solid #2c9fda;
+  padding: 2px 6px;
+  margin: 0px 3px;
+  }
+body.gui div.navbar div.seclist span.inactive {
+  background-color: #C0C0C0;
+  color: gray;
+  }
+body.gui div.navbar div.seclist span.here {
+  font-weight: bold;
+  background-color: white;
+  color: #2c9fda;
+  }
+body.gui div.navbar div.seclist a:link {
+  color: white;
+  background-color: #2c9fda;
+  text-decoration: none;
+  }
+body.gui div.navbar div.seclist a:hover:visited, 
+body.gui div.navbar div.seclist a:hover {
+  color: yellow;
+  background-color: #2c9fda;
+  text-decoration: underline;
+  }
+body.gui div.navbar div.seclist a:visited {
+  color: #c0c0c0;
+  background-color: #2c9fda;
+  text-decoration: none;
+  }
+body.gui table.pe {background-color: #ff8080; border: 7px ridge #800000; }
+/* body.gui table.pe th, body.gui table.pe td { border: 1px solid black; } */
+body.gui table.pe th {
+  padding: 0.25em 0.1em 0 0.1em;
+  }
+body.gui table.pe th,
+body.gui table.pe input
+{
+  font-size: 200%;
+  text-align: center;
+}
+body.gui table.pe th.label {
+  text-align: right;
+  padding-left: 0.5em;
+  padding-top: 0em;
+}
+body.gui table.dedit td.round div {
+  white-space: nowrap;
+}
+body.gui div.scorecard div.rdata div.p12.edit { height: 12pt; width: 44pt; }
+body.gui table.event_data td.id { text-align: right; font-style: italic; white-space: nowrap; }
+body.gui table.event_data td.note { font-size: 80%; }
+body.gui div.seclist span.label {
+  font-style: italic;
+}
+body.gui div.divlist {
+  text-align: center;
+  }
+body.gui div.divlist span {
+  padding: 0.1em 0.25em;
+}
+body.gui div.divlist span.here {
+  font-weight: bold;
+}
+body.gui div.divlist span.there {
+  text-decoration: underline;
+}
+body.gui div.divlist span.there:hover {
+  cursor: pointer;
+}
+body.gui table.config td.help { font-size: 80%; }
+body.gui table.config td.name { text-align: right; }
+body.gui table.config tr { background-color: #c0c0c0; padding: 1px 0 }
+body.gui p { margin-top: 3px; margin-bottom: 3px; } 
+body.gui p.p1 { text-align: justify; text-indent: 24px } 
+body.gui p.p2 { text-align: justify; } 
+body.gui p.backref { font-size: 80%; font-style: italic; }
+body.gui div.success { border: 1px solid green; padding: 0.1em; margin: 0.1em; font-weight: bold; color: green; background-color: #e0ffe0; text-align: center; }
+body.gui div.failure { border: 1px solid red; padding: 0.1em; margin: 0.1em; font-weight: bold; color: red; background-color: #ffe0e0; text-align: center; }
+body.gui table.dedit th {
+  border-top: 1px solid gray;
+  border-bottom: 3px double gray; 
+  }
+body.gui table.dedit th.round { 
+  text-align: left;
+  }
+body.gui table.dedit th , 
+body.gui table.dedit td { 
+  padding: 0 0.1em; 
+  margin: 0; 
+  border-bottom: 1px solid gray; 
+  border-right: 1px solid gray; 
+  } 
+body.gui table.dedit th.id , 
+body.gui table.dedit td.id { 
+  border-left: 1px solid gray; 
+  text-align: center;
+  }
+body.gui table.dedit td.round span { font-family: monospace; }
+body.gui table.dedit td.round span.opp { padding-right: 0.25em; }
+
+body.gui table.roster td {
+  text-indent: -3em;
+  padding: 0 0.25em 0 4.25em;
+  font-size: 80%;
+  }
+body.gui table.roster td select {
+  font-size: 70%;
+  }
+
+body.gui div.topnote {
+  text-align: center;
+  margin-bottom: 1em;
+  }
+body.gui div.scorecard {
+  border: 2pt solid black;
+  position: relative;
+  margin: auto;
+  }
+body.gui div.scorecard div.header {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  border-bottom: 2pt solid black;
+  }
+body.gui div.scorecard div.header div {
+  float: left;
+  padding-left: 12px;
+  height: 60px;
+  font-size: 48px;
+  }
+body.gui div.scorecard div.header div.id:after {
+  content: ": ";
+  }
+body.gui div.scorecard.has_photos div.header div.id:after {
+  content: "";
+  }
+body.gui div.scorecard div.header div.team,
+body.gui div.scorecard div.header div.rating,
+body.gui div.scorecard div.header div.name {
+  font-size: 24px;
+  padding-top: 15px;
+  height: 30px;
+  }
+body.gui div.scorecard div.header div.team:before {
+  content: "Team: ";
+  }
+body.gui div.scorecard div.header div.rating:before {
+  content: "Rating: ";
+  }
+body.gui div.scorecard div.header div.team, 
+body.gui div.scorecard div.header div.rating {
+  float: right;
+  padding-right: 12px;
+  }
+body.gui div.scorecard div.photo img {
+  padding-top: 6px;
+  height: 48px;
+  width: 48px;
+  }
+/* titles */
+body.gui div.scorecard div {
+  overflow: hidden;
+  }
+body.gui div.scorecard {
+  width: 524pt;
+  }
+body.gui div.scorecard div.titles {
+  clear: left;
+  position: relative;
+  height: 36pt;
+  width: 524pt;
+  border-bottom: 2pt solid black;
+  }
+body.gui div.scorecard div {
+  text-align: center;
+  vertical-align: middle;
+  }
+body.gui div.scorecard div.titles > div {
+  height: 36pt;
+  position: absolute;
+  top: 0px;
+  border-right: 2pt solid black;
+  font-weight: bold;
+  font-size: 9pt;
+  }
+body.gui div.scorecard div.header div.edit,
+body.gui div.scorecard div div.rdata div.edit {
+  background-color: white;
+  border: 3pt ridge #008000;
+  z-index: 1;
+  }
+body.gui div.scorecard div.header div.edit,
+body.gui div.scorecard div.header div.rating.edit { 
+  padding: 8pt 8pt; height: 26pt; /* not line-height, which messes up textfield */
+  }
+div.header div.edit input { font-size: 16pt; }
+body.gui div.scorecard div.rdata div.scores.edit,
+body.gui div.scorecard div.rdata div.orat.edit { 
+  height: 32pt; 
+  }
+body.gui div.scorecard div.rdata div.orat.edit { 
+  width: 60pt;
+  }
+body.gui div.scorecard div.rdata div.orat.edit span {
+  line-height: 32pt; /* careful not to apply this to the input */
+  }
+body.gui div.scorecard div.rdata div.p12.edit input { width: 1.5em; }
+body.gui div.scorecard div.rdata div.orat.edit input { width: 2.5em; }
+body.gui div.scorecard div.rdata div.scores.edit input { width: 5em; }
+/* one-line titles */
+body.gui div.scorecard div.titles > div {
+  line-height: 36pt;
+  }
+/* two-line titles */
+body.gui div.scorecard.track_firsts div.titles div.round,
+body.gui div.scorecard div.titles div.onum,
+body.gui div.scorecard div.titles div.for,
+body.gui div.scorecard div.titles div.against,
+body.gui div.scorecard div.titles div.orat {
+  line-height: 18pt;
+  }
+/* large-font titles */
+body.gui div.scorecard div.titles div.onam { font-size: 12pt; }
+body.gui div.scorecard div.rdata div.onam { text-align: left; }
+body.gui div.scorecard div.titles div.spread,
+body.gui div.scorecard div.rdata div.cume,
+body.gui div.scorecard div.rdata div.spread { border-right: none; }
+/* column widths and positions 
+ * 
+ * Several of the columns are optional: p12, board/table, orat, scores.
+ * Total width should be 524pt (A4 width minus an inch), with onam adjusting
+ * width to fit.  If all columns are present, their widths in pts are:
+ * round 48 board/table 36 onum 36 orat 36 onam 176
+ * won 36 lost 36 scores 72 spread 48
+ */ 
+body.gui div.scorecard div.round { left: 0pt; width: 48pt; }
+body.gui div.scorecard div.rdata div.p12 { top: 18pt; left: 0pt; width: 48pt; }
+body.gui div.scorecard div.board, 
+body.gui div.scorecard div.table { left: 48pt; width: 36pt; }
+body.gui div.scorecard div.onum { left: 48pt; width: 36pt; }
+body.gui div.scorecard.has_boards div.onum,
+body.gui div.scorecard.has_tables div.onum { left: 84pt; }
+body.gui div.scorecard div.orat { left: 84pt; width: 36pt; }
+body.gui div.scorecard.has_boards div.orat,
+body.gui div.scorecard.has_tables div.orat { left: 120pt; }
+body.gui div.scorecard div.onam { left: 84pt; width: 320pt; }
+body.gui div.scorecard.has_scores div.onam { left: 84pt; width: 248pt; }
+body.gui div.scorecard.has_boards div.onam,
+body.gui div.scorecard.has_tables div.onam,
+body.gui div.scorecard.has_ratings div.onam { left: 120pt; width: 284pt; }
+body.gui div.scorecard.has_scores.has_boards div.onam,
+body.gui div.scorecard.has_scores.has_tables div.onam,
+body.gui div.scorecard.has_scores.has_ratings div.onam { left: 120pt; width: 212pt; }
+body.gui div.scorecard.has_tables.has_ratings div.onam,
+body.gui div.scorecard.has_boards.has_ratings div.onam { left: 156pt; width: 248pt; }
+body.gui div.scorecard.has_scores.has_tables.has_ratings div.onam,
+body.gui div.scorecard.has_scores.has_boards.has_ratings div.onam { left: 156pt; width: 176pt; }
+body.gui div.scorecard div.won { left: 404pt; width: 36pt; }
+body.gui div.scorecard.has_scores div.won { left: 332pt; }
+body.gui div.scorecard div.lost { left: 440pt; width: 36pt; }
+body.gui div.scorecard.has_scores div.lost { left: 368pt; }
+body.gui div.scorecard div.scores { left: 404pt; width: 72pt; position: absolute; top: 0pt;}
+body.gui div.scorecard div.scores.edit { width: 108pt; }
+body.gui div.scorecard div.spread { left: 476pt; width: 48pt; }
+body.gui div.scorecard div.rdata div.cume { top: 18pt; left: 476pt; width: 48pt;  }
+body.gui div.scorecard div.scores div.for { position: absolute; left: 0; top: 0; width: 36pt; border-right: 2pt solid black }
+body.gui div.scorecard div.scores div.against { position: absolute; left: 36pt; top: 0; width: 36pt }
+/* tweak column font sizes */
+body.gui div.scorecard div.rdata div.orat,
+body.gui div.scorecard div.rdata div.onam,
+body.gui div.scorecard div.rdata div.spread,
+body.gui div.scorecard div.rdata div.cume { font-size: 12pt; }
+body.gui div.scorecard div.rdata div.onam { line-height: 18pt; }
+/* round data */
+body.gui div.scorecard div.rdata {
+  position: relative;
+  height: 36pt;
+  width: 524pt;
+  border-bottom: 2pt solid black;
+  }
+body.gui div.scorecard div.rdata > div {
+  font-size: 14pt;
+  line-height: 36pt;
+  height: 36pt;
+  position: absolute;
+  top: 0pt;
+  border-right: 2pt solid black;
+  }
+body.gui div.scorecard div.rdata div.p12 span.y {
+  border: 1pt solid black;
+  -moz-border-radius: 0.4em;
+  -webkit-border-radius: 0.4em;
+  border-radius: 0.4em;
+  }
+body.gui div.scorecard div.rdata div.p12 span.n {
+  text-decoration: line-through;
+  }
+body.gui div.scorecard div.rdata div.onam span.name {
+  display: block;
+  position: absolute;
+  top: 0pt;
+  left: 0.5em;
+  }
+body.gui div.scorecard.has_photos div.rdata div.onam span.name {
+  left: 38pt;
+  }
+body.gui div.scorecard div.rdata div.onam img {
+  position: absolute;
+  top: 2pt;
+  left: 4pt;
+  height: 32pt;
+  width: 32pt;
+  }
+body.gui div.scorecard.track_firsts div.rdata div.round,
+body.gui div.scorecard div.rdata div.p12,
+body.gui div.scorecard div.rdata div.cume,
+body.gui div.scorecard div.rdata div.spread {
+  line-height: 18pt;
+  height: 18pt;
+  }
+body.gui div.scorecard div.rdata div.p12 {
+  font-size: 9pt;
+  }
+body.gui div.scorecard div.rdata div.cume {
+  border-top: 2pt solid black;
+  }
+body.gui .savebutton { color: green; }
+body.gui .cancelbutton { color: red; }
+/* valet score entry */
+body.gui div.valet { position: relative; width: 320px; height: 480px; }
+/* body.gui div.valet div { border: 2px solid #2c9fda; line-height: 32px } */
+body.gui div.valet div { border: 2px solid black; line-height: 32px } 
+body.gui div.valet div.entered { position: absolute; top:   0px; left:   0px; width: 316px; height:  32px }
+body.gui div.valet div.pending { position: absolute; top:  34px; left:   0px; width: 316px; height:  32px }
+body.gui div.valet div.scores  { position: absolute; top:  68px; left:   0px; width: 316px; height: 130px }
+body.gui div.valet div.round   { position: absolute; top: 200px; left:   0px; width: 124px; height:  32px }
+body.gui div.valet div.division{ position: absolute; top: 200px; left: 126px; width: 124px; height:  32px }
+body.gui div.valet div.buttons { position: absolute; top: 200px; left: 252px; width:  64px; height:  32px }
+body.gui div.valet div.pending div.label,
+body.gui div.valet div.entered div.label { position: absolute; top: -2px; left:  -2px; width: 64px; height: 32px }
+body.gui div.valet div.pending div.none,
+body.gui div.valet div.entered div.none,
+body.gui div.valet div.pending div.menu,
+body.gui div.valet div.entered div.menu  { position: absolute; top: -2px; left: 64px; width: 250px; height: 32px }
+body.gui div.valet div.scores div.p1     { position: absolute; top: -2px; left: -2px; width: 316px; height: 64px }
+body.gui div.valet div.scores div.p2     { position: absolute; top: 64px; left: -2px; width: 316px; height: 64px }
+body.gui div.valet div.division div.label,
+body.gui div.valet div.round div.label   { position: absolute; top: -2px; left: -2px; width:  64px; height: 32px }
+body.gui div.valet div.division div.menu,
+body.gui div.valet div.round div.menu    { position: absolute; top: -2px; left: 64px; width:  58px; height: 32px }
+body.gui div.valet div.menu { text-align: center }
+body.gui div.valet div.division div.label,
+body.gui div.valet div.round div.label,
+body.gui div.valet div.pending div.label,
+body.gui div.valet div.entered div.label {  font-size: 14px; text-align: center }
+body.gui div.valet div.buttons { text-align: center }
+body.gui div.valet div.buttons input { -webkit-appearance: button; height: 24px; width: 56px; position: relative; bottom: 2px; }
+body.gui div.valet div.pending div.menu select,
+body.gui div.valet div.entered div.menu select { width: 240px; }
+body.gui div.valet div.scores div.player div.input { position: absolute; top: -2px; left: 250px; width: 64px; height: 64px; line-height: 64px; text-align: center }
+body.gui div.valet div.scores div.player input { font-size: 16px; }
+body.gui div.valet div.scores div.player div.label { position: absolute; top: -2px; left: -2px; width: 250px; height: 64px;  }
+body.gui div.valet div.scores div.player div.label img { width: 62px; height: 62px; }
+body.gui div.valet div.scores div.player div.label > div.photo { position: absolute; top: -2px; left: -2px; width: 64px; height: 64px }
+body.gui div.valet div.scores div.player div.label > div.photo img { position: absolute; top: 1px; left: 1px }
+body.gui div.valet div.scores div.player div.label > div.name { top: -2px; }
+body.gui div.valet div.scores div.player div.label div.record { top: 20px; }
+body.gui div.valet div.scores div.player div.label div.next { top: 42px; }
+body.gui div.valet div.scores div.player div.label > div.name,
+body.gui div.valet div.scores div.player div.label div.next,
+body.gui div.valet div.scores div.player div.label div.record { position: absolute; left: 64px; width: 184px; height: 20px; line-height: 20px; font-size: 14px; }
+body.gui div.valet div.scores div.player div.label div.p12 { position: absolute; top: -2px; left: -2px; width: 32px; height: 20px; line-height: 20px; background-color: white; z-index: 1; }
+body.gui div.valet a:link,
+body.gui div.valet a:visited {
+  text-decoration: none;
+}
+body.gui div.valet a:hover {
+  text-decoration: underline;
+}
+body.gui div.valet div.menu,
+body.gui div.valet div.none,
+body.gui div.valet div.buttons,
+body.gui div.valet div.input { background: #C0C0C0; }
+body.gui div.valet div.label { background: url(/lib/gui/blue-gradient-32.gif) }
+body.gui div.valet div.player div.label { background: url(/lib/gui/blue-gradient-64.gif) }
+body.gui div.valet div.player div.label div.next > div { position: absolute; height: 20px; top: 1px; }
+body.gui div.valet div.player div.label div.next div.label { margin-left: 5px }
+body.gui div.valet div.player div.label div.next div.label,
+body.gui div.valet div.player div.label div.next div.where,
+body.gui div.valet div.player div.label div.next div.name { top: -4px; }
+body.gui div.valet div.player div.label div.next div.label,
+body.gui div.valet div.player div.label div.next div.where,
+body.gui div.valet div.player div.label div.next div.photo,
+body.gui div.valet div.player div.label div.next div.name { position: relative; display: inline;  }
+body.gui div.valet div.player div.label div.next img { width: 18px; height: 18px; }
+body.gui div.valet div.player div.next div { display: inline; border: none; font-size: 14px; line-height: 20px; font-size: 9px}
+@media screen and (max-device-width: 480px) {
+  body.gui span#nav_quit,
+  body.gui span.inactive { display: none; }
+  body.gui { width: 320px }
+  }
+.eqw2 { width: 50%; }
+.eqw3 { width: 33%; }
+.eqw4 { width: 25%; }
+.eqw5 { width: 20%; }
+.eqw6 { width: 16%; }
+.eqw7 { width: 14%; }
+.eqw8 { width: 12%; }
+table.index { border-spacing: 0; }
+body.index.compact table.index { border: 3px double #80c080; }
+body.index.compact table.index tr.round0 td { border-top: 1px solid #80c080; border-bottom: 1px solid #80c080; text-align: center; }
+body.index.compact table.index tr.rtypes th { border-right: 1px solid #80c080; border-bottom: 1px solid #80c080; padding-bottom: 0.2em; }
+body.index.compact table.index tr.rtypes th.lastc { border-right: none; }
+body.index.compact table.index tr.round td { border-right: 1px solid #80c080; border-bottom: 1px solid #80c080; }
+body.index.compact table.index tr.round td.lastc { border-right: none; }
+body.index.compact tr.round0 td.links div {
+  display: inline;
+  }
+/* Thai realm usage */
+body.thai.ratings h1 { font-size: 120%; }
+body.thai.ratings table.ratings tr.top1 th {
+  font-size: 100%; line-height: 100%; padding: 0.1em 0.2em
+  }
+body.thai.alpha_pairings .seat, body.thai.ratings .seat, body.thai.pairings .seat { display: none }
+/* 2015-05 scoreboard changes */
+body.enhanced.scoreboard div.sbctl.tools { left:auto; right:5px; z-index: 5}
+body.enhanced.scoreboard div.ctlbox { z-index:10;position:absolute;top:20px;right:20px;opacity:0.90;background-color:white }
+body.enhanced.scoreboard div.ctlbox.hidden { display: none }
+body.enhanced.scoreboard div.ctlbox table.ctls { border: 1px solid #c0c0c0; }
+body.enhanced.scoreboard div.ctlbox table.ctls th { text-align: right; font-weight: normal; font-style: italic; padding: 0.1em 0.25em }
+body.enhanced.scoreboard div.ctlbox table.ctls td { white-space: nowrap; padding: 0.1em 0.25em }
+body.enhanced.scoreboard div.ctlbox table.ctls td.close { font-weight: bold; border-bottom: 1px solid black }
+body.enhanced.scoreboard div.ctlbox table.ctls td.close button { float: right; }
+body.enhanced.scoreboard div.ctlbox table.ctls tr > * { color: black; vertical-align: top; }
+body.enhanced.scoreboard div.ctlbox table.ctls button { border-width:1px; background-color: #ffffff }
+body.enhanced.scoreboard div.ctlbox table.ctls button:disabled { background-color: #e0e0e0 }
+body.enhanced.scoreboard div.ctlbox table.ctls button.output { background-color: #ffffff; color: #b0b0b0 }
+body.enhanced.scoreboard div.sbp.pair { background-color: #404040; border: #808080; overflow: auto }
+body.enhanced.scoreboard div.sbp table.pairing, body.enhanced.scoreboard div.sbp table.scorecard { width: 100%; font-size: inherit }
+body.enhanced.scoreboard div.sbp table.pairing td.player { min-width: 50%; max-width: 50%; width: 50% }
+body.enhanced.scoreboard div.sbp table.pairing td.heading { text-align: left }
+body.enhanced.scoreboard div.sbp table.pairing div.first { text-align: left }
+body.enhanced.scoreboard div.sbp table.pairing div.wl { text-align: left }
+body.enhanced.scoreboard div.sbp table.pairing td.player img.head { width: 100% }
+body.enhanced.scoreboard div.sbp table.pairing div.last span.label { color: yellow}
+body.enhanced.scoreboard div.sbp.card { overflow: auto }
+body.enhanced.scoreboard div.sbp table.scorecard { background-color: #ffffd0; color: black; border-collapse: collapse }
+body.enhanced.scoreboard div.sbp table.scorecard img { height: 2em; width: 2em; }
+body.enhanced.scoreboard div.sbp table.scorecard .head img { padding-left: 0.25em; }
+body.enhanced.scoreboard div.sbp table.scorecard .team img { height: 0.7em; width: 0.7em; }
+body.enhanced.scoreboard div.sbp table.scorecard th.top > div, body.enhanced.scoreboard div.sbp table.scorecard td.opponent > div { display: inline-block; white-space: nowrap; padding: 2px}
+body.enhanced.scoreboard div.sbp table.scorecard td.bp12 div { text-align: center; }
+body.enhanced.scoreboard div.sbp table.scorecard td { vertical-align: middle; padding: 0.1em 0.5em; }
+body.enhanced.scoreboard div.sbp table.scorecard .spread { border-right-width: 1px; }
+body.enhanced.scoreboard div.sbp table.scorecard .score { text-align: center; }
+body.enhanced.scoreboard div.sbp table.scorecard .rank { text-align: center; }
+body.enhanced.scoreboard div.sbp table.scorecard td.wl.W { background-color: #c0FFc0; }
+body.enhanced.scoreboard div.sbp table.scorecard td.wl.L { background-color: #FFc0c0; }
+body.enhanced.scoreboard div.splitter { cursor: pointer; }
+body.enhanced.scoreboard img.head.mood0 { filter: grayscale(100%); }
+body.enhanced.scoreboard img.head.mood1 { filter: grayscale(90%); }
+body.enhanced.scoreboard img.head.mood2 { filter: grayscale(80%); }
+body.enhanced.scoreboard img.head.mood3 { filter: grayscale(70%); }
+body.enhanced.scoreboard img.head.mood4 { filter: grayscale(60%); }
+body.enhanced.scoreboard img.head.mood5 { filter: grayscale(50%); }
+body.enhanced.scoreboard img.head.mood6 { filter: grayscale(40%); }
+body.enhanced.scoreboard img.head.mood7 { filter: grayscale(30%); }
+body.enhanced.scoreboard img.head.mood8 { filter: grayscale(20%); }
+body.enhanced.scoreboard img.head.mood9 { filter: grayscale(10%); }
+
+table.banner a:visited, table.banner a:link {
+  color: black;
+  text-decoration: none;
+  }
+table.banner a:visited:hover,
+table.banner a:hover {
+  color: black;
+  text-decoration: underline;
+  }

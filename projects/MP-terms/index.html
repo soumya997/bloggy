@@ -1,0 +1,675 @@
+<html>
+
+    <head>
+        
+      <title>Kadencyjność posłów — Alkamid</title>
+      <meta name='description' content='Wizualizacja kadencyjności posłów w VII kadencji Sejmu RP.'>
+        <meta charset="utf-8">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
+        <link href='https://fonts.googleapis.com/css?family=Fira+Sans&subset=latin-ext' rel='stylesheet' type='text/css'>
+        <style>
+            
+            font-family: 'Fira Sans', sans-serif;
+            
+            input.vertical {
+                -webkit-appearance: slider-vertical;
+                writing-mode: bt-lr;
+            }
+        
+            #header {
+                background-color:black;
+                color:white;
+                width: 850px;
+                text-align:center;
+                padding:5px;
+            }
+
+            div#controls {
+                float:left;
+                text-align: center;
+                padding-top:30px;
+                padding-left:40px;
+                width: 30%;
+            }
+
+            div#histogram {
+                float:right;
+                text-align: center;
+                padding-top:30px;
+                width: 65%;
+            }
+
+            div#histograms {
+                text-align: center;
+                padding-top: 20px;
+
+            }
+
+            div#middle {
+                width: 850px;
+                height: 520px;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            div#seats {
+                text-align: center;
+                width: 850px;
+                float: left;
+            }
+            
+            div#seats_legend {
+                width: 300px;
+                float: right;
+            }
+
+            div#leftcolumn {
+                width: 850px;
+                float: left;
+                text-align:center;
+            }
+            
+            
+            div#total {
+                width: 1150px;
+            }
+
+            body {
+                font-family: 'Fira Sans';
+                background-color: #fffff9;
+            }
+
+            button {
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                text-transform: uppercase;
+                font-size: 14px;
+                color: #eee;
+                background-color: #333;
+                padding: 10 16;
+                margin: 6px;
+                border: none;
+                -webkit-border-radius: 10px;
+                -moz-border-radius: 10px;
+                border-radius: 10px;
+            }
+
+            button: 
+            {
+                background-color: #666;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+    
+        <div id="header">
+                <!--<h1>Polish Parliament, 7th term</h1>-->
+                <h1>Sejm RP VII kadencji</h1>
+        </div>
+        
+        <div id='total'>
+        
+        
+            <div id="leftcolumn">
+
+
+                    <!-- <p style='text-align: left; padding-left:30px;' lang='en'>It's 2015, the election year in Poland. I've recently heard an interesting idea from one of the parties: to limit the number of consecutive terms that one person can sit in the parliament to two. In other words, after you've served two terms, you cannot run for the seat again and you have to take a break.</p>
+                    <p style='text-align: left; padding-left:30px;' lang='en'>This is a tool to provide evidence for discussion of 'professional parliamentarism'. There is not much to play around with, I just wanted to present the data in a clear way. If you have any comments, I tweet on <a href='http://twitter.com/aklimont'>@aklimont</a>.</p> -->
+                    <p style='text-align: left; padding-left:30px;' lang='pl'>Jest rok 2015, w Polsce zbliżają się wybory do parlamentu. Do debaty publicznej nieśmiało próbuje przebić się temat kadencyjności posłów, szczególnie dzięki stowarzyszeniu NowoczesnaPL. Proponują oni ograniczyć liczbę **kolejnych** kadencji do dwóch - po tym czasie poseł musiałby na jakiś czas odpocząć od posłowania.</p>
+                    <p style='text-align: left; padding-left:30px;' lang='pl'><a href='https://pl.wikipedia.org/wiki/Heurystyka_dost%C4%99pno%C5%9Bci'>Heurystyka dostępności</a> może sprawiać że gdy myślimy o kadencyjności, do głowy przychodzą nam zazwyczaj znani posłowie, którzy rzeczywiście w Sejmie są od dawna. Możemy więc dojść do  wniosku, że nasz parlament składa się niemal wyłącznie ze starych wyg i wygów.</p>
+                    <p style='text-align: left; padding-left:30px;' lang='pl'>Poniższa wizualizacja ma za zadanie ułatwić debatę na temat kadencyjności. Nie jest bardzo interaktywna, chciałem po prostu przejrzyście zaprezentować dane (które pochodzą ze <a href='http://www.sejm.gov.pl/Sejm7.nsf/poslowie.xsp?type=A'>stron Sejmu)</a>. Komentarze mile widziane na <a href='http://twitter.com/aklimont'>@aklimont</a>.
+
+                    <p style='text-align: left; padding-left:30px;' lang='pl'>Strona działa w Chrome i Firefoksie, raczej nie działa w IE. Kod jest dostępny na <a href='https://github.com/alkamid/data/tree/master/MP-terms'>githubie</a>.</p>             
+                    <br />
+                    <!-- <h2 style='display: inline'>SEATS IN THE PARLIAMENT</h2>-->
+                    <h2 style='display: inline'>POSŁOWIE W SEJMIE</h2>
+                    <br />
+                    <!-- <p style='display: inline'>(squares = MPs, colour = party, size = terms in office)</p> -->
+                    <p style='display: inline'>(kwadraty = posłowie, wielkość = liczba kolejnych kadencji; najedź na kwadrat by zobaczyć nazwisko)</p>
+                </div>
+                <div id="seats">    
+                    <svg width=1150 height=500 id='seats'></svg>
+                </div>
+                <div id='seats_legend'>
+                        <!--<button id='party'>by party</button>
+                        <button id='term'>by term</button>-->
+                        <button id='party'>wg partii</button>
+                        <br />
+                        <button id='term'>wg kadencji</button>
+                </div>
+                <div id='leftcolumn'>
+                <div id="middle">
+
+                    <div id="controls">
+
+                        <!--<p id="sliderText">term threshold: 1</p>-->
+                        <p id="sliderText" style="text-align:center">próg kadencji: 1</p>
+                        
+                        <input type=range min=1 max=7 value=1 class=vertical orient=horizontal></input>
+                        <br />
+                    <p style='text-align: left' lang='pl'>Suwak służy do wyróżniania <em>długoterminowych</em> posłów. Np. '5' oznacza, że wyróżnieni zostaną tylko posłowie, którzy w Sejmie zasiadają od pięciu kadencji lub dłużej.</p>
+                        
+                    <p style='text-align: left' lang='pl'>Wykres po prawej przedstawia wszystkich posłów w Sejmie; kolory oznaczają przynależność do klubów. Np. jest 35 posłów, których obecna kadencja jest czwartą z rzędu, a ponad 30% (165) posłów jest w Sejmie pierwszy raz (lub pierwszy raz po przerwie). Wykresy na dole przedstawiają to samo, ale dla poszczególnych partii.</p>
+
+
+                    </div>
+
+                    <div id='histogram'>
+                        <!--<h2>ALL MPs</h2>-->
+                        <h2>WSZYSCY POSŁOWIE</h2>
+                        <svg width=520 height=370 id='histogram'></svg>
+                        
+
+                    </div>
+
+                </div>
+
+                <div id='histograms'>
+                    <!--<h2>MPs BY PARTY</h2>-->
+                    <h2>Posłowie wg partii</h2>
+                    <svg width=850 height=920 id='histograms'></svg>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <script>
+    
+            var svg = d3.select('svg#seats')
+            var svgHisto = d3.select('svg#histogram')
+            var svg_histograms = d3.select('svg#histograms')
+            
+            function sortPoints(byWhat, a, b){
+                if (byWhat == 'terms') {
+                
+                    byparty = d3.descending(+a['recent-mp'], +b['recent-mp'])
+                    if (byparty != 0)
+                        return byparty
+                    else {
+                        if (a['party_name'] < b['party_name'])
+                            return -1;
+                        else if (a['party_name'] > b['party_name'])
+                            return 1;
+                        else {
+                            return d3.ascending(a.dob,b.dob)
+                        }
+                    }
+                }
+                else {
+                    if (a['party_name'] < b['party_name'])
+                       return -1;
+                    if (a['party_name'] > b['party_name'])
+                       return 1;                
+                    return d3.descending(+a['recent-mp'], +b['recent-mp']) || d3.ascending(a.dob,b.dob)                                
+                }                          
+            }
+            
+        var rows = 15
+        var xSpacing = 25
+        var ySpacing = 25
+        var scale = 3            
+        
+        
+        //read in the database, sort by number of terms in office, then by parliamentary club (i.e. party)
+        d3.csv('data/7th_term.csv', function(db){
+            
+            db = db.filter(function(d){
+                return d.expired == 'None'
+            })
+            
+            byRecentTerm = d3.nest()
+                .key(function(d){
+                    return d['recent-mp']
+                })
+                .key(function(d){
+                    return d['party_name']
+                })
+                .sortKeys(d3.ascending)
+                .entries(db)
+            
+            function name(d){
+                return d.name
+            }
+            
+            function getTotalMPs(dataSet){
+                return d3.nest()
+                    .key(function(d){
+                        return d['recent-mp']
+                    })
+                    .rollup(function(d){
+                        return d.length
+                    })
+                    .sortKeys(d3.ascending)
+                    .entries(dataSet)
+            }
+            
+            function define_vertical_lines(input_data, sumMPs) {
+                
+                var linesArr = []
+                var maxMPs = d3.max(input_data).values
+                var maxProportion = maxMPs/sumMPs
+                
+                if (Math.floor((maxProportion)/0.05) <= 5) {
+                    for (var i = 1; i<=Math.floor(maxMPs/(0.05*sumMPs)); i++) {
+                        linesArr.push(i*5)
+                    }
+                }
+                else if (Math.floor((maxProportion)/0.10) <= 5) {
+                    for (var i = 1; i<=Math.floor(maxMPs/(0.1*sumMPs)); i++) {
+                        linesArr.push(i*10)
+                    }
+                }
+                else {
+                    for (var i = 1; i<=Math.floor(maxMPs/(0.2*sumMPs)); i++) {
+                        linesArr.push(i*20)
+                    }
+                }
+                return linesArr;
+                }
+             
+            
+            
+            function partyHistogram(newDataSet, newdb, i, main_histogram) {
+                
+                main_histogram = typeof main_histogram !== 'undefined' ? main_histogram : false;
+                
+                var yticks_fontsize = 15
+                var xticks_fontsize = 10
+
+                
+                if (main_histogram == true) {
+                    var bar_width = 40;
+                    var histogram_height = 320;
+                    var bar_separation = 58;
+                    var group_xtranslation = 0;
+                    var group_ytranslation = 140;
+                    var svg = svgHisto;
+                    var histoGroup_xoffset = 80;
+                }
+                else {
+                    var bar_width = 17;
+                    var histogram_height = 110;
+                    var bar_separation = 25;
+                    var group_xtranslation = i%3*300;
+                    var group_ytranslation = (30+Math.floor(i/3)*280);
+                    var svg = svg_histograms;
+                    var histoGroup_xoffset = 30;
+                }
+                
+                var ytrac = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+                
+                histogramWhole = svg
+                                .append('g')
+                                .attr('id', 'party-histo')
+                                .attr('transform', function() { return 'translate(' + group_xtranslation + ',' + group_ytranslation + ')' })
+                                      
+
+                
+                mpTotals = getTotalMPs(newDataSet)
+               
+                var sumMPs = 0
+                mpTotals.forEach(function(d){ sumMPs += d.values})
+
+                
+                linesArr = define_vertical_lines(mpTotals, sumMPs)
+                
+                histoScale = d3.scale.linear()
+                    .domain([0, d3.max(mpTotals).values])
+                    .range([0, histogram_height])
+
+                histoVertScale = d3.scale.linear()
+                    .domain([0, linesArr[linesArr.length-1]])
+                    .range([0, linesArr[linesArr.length-1]*sumMPs])
+                
+                
+                histVertLines = histogramWhole.selectAll('line')
+                    .data(linesArr)
+                    .enter()
+                    .append('line')
+                    .attr('x1', histoGroup_xoffset-0.5*bar_width)
+                    .attr('x2', bar_separation*8.5)
+                    .style('stroke', 'black')
+                    .style('opacity', 0.2)
+                    .attr('stroke-dasharray', 3)
+                    .transition()
+                    .duration(500)
+                    .attr('y1', function(d){
+                        return 200-histoScale(d*0.01*sumMPs)
+                    })
+                    .attr('y2', function(d){
+                        return 200-histoScale(d*0.01*sumMPs)
+                    })
+                
+                histVerLineLabels = histogramWhole.selectAll('text')
+                    .data(linesArr)
+                    .enter()
+                    .append('text')
+                    .attr('x', bar_separation*8.5)
+                    .attr('y', function(d){
+                        return 200-histoScale(d*0.01*sumMPs)
+                    })
+                    .text(function(d){
+                        return d + '%'
+                    })
+                    .style('fill-opacity', 0.5)
+                    .attr('font-size', xticks_fontsize)
+                    
+                
+                
+                histogramGroup = histogramWhole.selectAll('#histoGroup')
+                .data(newdb)
+                .enter()
+                .append('g')
+                .attr('id', 'histoGroup')
+                .attr('transform', function(d){
+                    return 'translate (' + (histoGroup_xoffset+(d.key-2)*bar_separation) + ', 200)';
+                })                
+                                
+                histogramGroup.selectAll('rect')
+                    .data(function(d) { return d.values; })
+                    .enter()
+                    .append('rect')
+                    
+                    .attr('width', bar_width)
+                    .attr('fill', function(d){
+                        return partyColors(d.key)
+                    })
+                    .attr('height', 0)
+                    .attr('y', 0)
+                    .transition()
+                    .duration(500)
+                    .attr('height', function(d){
+                        return histoScale(d.values.length)
+                    })
+                    .attr('y', function(d,i,j){
+                        ytrac[j] -= histoScale(d.values.length)
+                        return ytrac[j]
+                    })
+
+            //add labels above the bars
+            histogramWhole.selectAll('#histoGroup')
+                .data(mpTotals)
+                .append('text')
+                .attr('font-family', 'Fira Sans')
+                .attr('font-size', yticks_fontsize)
+                .text(function(d){
+                    return ''+d.values
+                })
+                .attr('y', function(d, i){
+                    return ytrac[i] - 10
+                })
+                .attr('x', function(d){
+                    return (bar_width/2)-(d.values.toString().length*yticks_fontsize*0.5/2)
+                })
+            
+            
+            //add x axis ticks
+            histogramWhole.selectAll('#histoGroup')
+                .data(mpTotals)
+                .append('text')
+                .attr('font-family', 'Fira Sans')
+                .attr('font-size', xticks_fontsize)
+                .text(function(d){
+                    return ''+(d.key-1)
+                })
+                .attr('y', 20)
+                .attr('x', (bar_width/2)-(xticks_fontsize*0.5/2)) // this is a crude method to center the text. There must be a better one
+            
+            if (main_histogram != true) {
+            
+            var title = newDataSet[0]['party_name']
+            histogramWhole.append('text')
+                .text(title)
+                .attr('font-family', 'Fira Sans')
+                .attr('font-size', 15)
+                .attr('x', 30)
+                .attr('y', 10)        
+            
+            }
+            else {
+                histogramWhole.append('text')
+                //.text('terms: ')
+                .text('kadencje: ')
+                .attr('x', 0)
+                .attr('y', 220)        
+            }
+            }
+            
+            // draw the main histogram (with all parties)
+            partyHistogram(db, byRecentTerm, 1, true)
+            
+
+            
+           
+           db.sort(function(a,b){
+               return sortPoints('party_name', a, b)
+           })
+           
+           /* Draw all MPs as rectangles */
+           
+           svg.selectAll('rect')
+                .data(db, name)
+                .enter()
+                .append('rect')
+                .attr('id', 'mp_dots')
+                .attr('x', function(d,i){
+                    return (50+(Math.floor(i/rows))*xSpacing)
+                })
+                .attr('y', function(d,i){
+                    return (20+(i%rows)*ySpacing)
+                })
+                .attr('width', function(d){
+                    return scale*d['recent-mp']
+                })
+                .attr('height', function(d){
+                    return scale*d['recent-mp']
+                })
+                .attr('fill', function(d){
+                    return partyColors(d['party_name'])
+                })
+                .on('mouseover', function(d){
+                    svg.append('text')
+                        .attr('id', 'tooltip')
+                        .attr('font-family', 'Fira Sans')
+                        .text(d.name + ' (' + d.party_acronym + ')')
+                        .attr('x', 50)
+                        .attr('y', 455)
+                    
+                    svg.select('g#termBarGroup').selectAll('rect')
+                        .data(d['history-mp'].split(':'))
+                        .style('fill-opacity', function(d){
+                            if (d == 1)
+                                return 1.0
+                            else
+                                return 0.3
+                        })
+                })
+                .on('mouseout', function(){
+                    svg.selectAll('#tooltip')
+                        .remove()
+                    
+                    svg.select('g#termBarGroup').selectAll('rect')
+                        .style('fill-opacity', 0.3)
+                })
+            
+            
+            termIndicator = svg.append('g')
+                .attr('id', 'termBarGroup')
+                .attr('transform', 'translate(400, 440)')
+            
+            
+            var termDuration = [1.5,4,4,4,2,4,4]
+            
+            termIndicator.selectAll('rect')
+                .data(termDuration)
+                .enter()
+                .append('rect')
+                .attr('id', function(d,i){
+                    return 'termBar_' + (i+1)
+                })
+                .attr('x', function(d,i){
+                    return d3.sum(termDuration.slice(0, i))*15+i*3
+                })
+                .attr('width', function(d){
+                    return d*15
+                })
+                .attr('height', 20)
+                .style('fill-opacity', 0.3)
+
+            
+            termIndicator.selectAll('text')
+                .data(termDuration)
+                .enter()
+                .append('text')
+                .attr('y', 40)
+                .text(function(d,i) { 
+                    return '\'' + ('00' + Math.ceil(91+d3.sum(termDuration.slice(0, i)))%100).substr(-2) })
+                .attr('x', function(d,i){
+                    return d3.sum(termDuration.slice(0, i))*15+i*3-10
+                })
+            
+
+            d3.select('body').select('.vertical')
+                .on('change', function(d) {
+                    var val = this.value
+                    svg.selectAll('rect#mp_dots')
+                        .attr('fill-opacity', function(d){
+                            if (d['recent-mp'] <= val)
+                                return 0.4
+                            else
+                                return 1.0
+                        })
+                    svgHisto.selectAll('#histoGroup').selectAll('rect')
+                        .attr('fill-opacity', function(d, i,j){
+
+                        if (j < val-1)
+                            return 0.6
+                        else
+                            return 1
+                        })
+                    d3.select('p#sliderText')
+                        .text(function(){
+                            //return 'term threshold: ' + val
+                            return 'próg kadencji: ' + val
+                        })
+                    
+                })
+            
+            
+            d3.select('body').selectAll('button')
+                .data(['party', 'terms'])
+                .on('click', function(d){
+                
+                    newd = db.sort(function(a,b){
+                        return sortPoints(d, a, b)
+                    })
+
+                    svg.selectAll('rect').data(newd, name)
+                        .transition()
+                        .duration(1000)
+                        .attr('x', function(d,i){
+                            return (50+(Math.floor(i/rows))*xSpacing)
+                        })
+                        .attr('y', function(d,i){
+                            return (20+(i%rows)*ySpacing)
+                        })
+                    
+                    
+                    })
+
+                    
+            parties = d3.nest()
+                .key(function(d){
+                    return d['party_name']
+                })
+                .entries(db)
+            
+            svg.selectAll('g#legend_group')
+                .data(parties)
+                .enter()
+                .append('g')
+                .attr('id', 'legend_group')
+                .attr('transform', function(d, i){
+                    return 'translate(850, ' + (370-i*25) + ')'
+                })
+                
+            svg.selectAll('g#legend_group')
+                .data(parties)
+                .append('rect')
+                .style('fill', function(d){
+                    return partyColors(d.key)
+                })
+                .attr('height', 10)
+                .attr('width', 30)
+            
+            svg.selectAll('g#legend_group')
+                .data(parties)
+                .append('text')
+                .text(function(d){
+                    return d.key
+                })
+                .attr('x', 40)
+                .attr('y', 10)
+            
+            
+            
+            parties.forEach(function(d, i){
+                newdb = db.filter(function(e){
+                            return e['party_name'] == d.key
+                        })
+                newData = d3.nest()
+                    .key(function(e){
+                        return e['recent-mp']
+                    })
+                    .key(function(e){
+                        return e['party_name']
+                    })
+                    .sortKeys(d3.ascending)
+                    .entries(newdb)
+                
+
+                partyHistogram(newdb, newData, i)
+            })
+                            
+            
+            function partyColors(party_name){
+                switch (party_name) {
+                    case 'Platforma Obywatelska':
+                        return 'darkorange';
+                    case 'Prawo i Sprawiedliwość':
+                        return 'darkblue';
+                    case 'Polskie Stronnictwo Ludowe':
+                        return '#4daf4a';
+                    case 'Sojusz Lewicy Demokratycznej':
+                        return 'red';
+                    case 'Zjednoczona Prawica':
+                        return '#377eb8';
+                    case 'Ruch Palikota':
+                        return '#FFB964';
+                    case 'Biało-Czerwoni':
+                        return '#D46A6A';
+                    default:
+                        return 'grey';
+                }
+            }
+            
+        });
+        
+        
+        
+        
+        
+        
+        
+        </script>
+    
+    
+    </body>
+
+
+
+</html>

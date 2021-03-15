@@ -1,0 +1,27 @@
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="{{ site.url }}{{ site.data.navigation[site.lang].home.url}}">{{ site.data.translations[page.lang].title }}</a>
+
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav id="site-nav" class="nav">
+		    <ul>
+
+		<li class="lang">
+		  {% assign posts=site.posts | where:"name", page.name | sort: 'path' %}
+		  {% for post in posts %}
+		  <a href="{{ post.url }}" class="{{ post.lang }}">{{ post.lang }}</a>
+		  {% endfor %}&nbsp;&nbsp;&nbsp;&nbsp;|
+		</li>
+		      {% for link in site.data.navigation[page.lang] %}
+				    {% if link[1].url contains 'http' %}
+				        {% assign domain = '' %}
+				        {% else %}
+				        {% assign domain = site.url %}
+				    {% endif %}
+				    <li><a href="{{ domain }}{{ link[1].url }}" {% if link[1].url contains 'http' %}target="_blank"{% endif %}>{{ link[1].title }}</a></li>
+				{% endfor %}
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
