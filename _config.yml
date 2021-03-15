@@ -2,7 +2,7 @@
 
 title:            Alkamid in the lab
 locale:           pl_PL
-url:              https://soumya997.github.io/blogs/
+url:              https://soumya997.github.io/bloggy/
 
 
 # Jekyll configuration
@@ -41,23 +41,23 @@ titlecase: true
 
 # Site owner
 owner:
-  name: alkamid
-  avatar: profile-cropped.jpg
-  bio: "Living in the Cambridge bubble"
-  email: 
-  disqus-shortname: alkamid-lab
-  twitter: #username
+  name: soumyadip sarkar
+  avatar: edited2.png
+  bio: "Knowledge>codeMonkey"
+  email: "soumya997.sarkar@gmail.com"
+  disqus-shortname: https-soumya997-github-io-bloggy
+  twitter: "Soumya997Sarkar"
   facebook: #username
   google:
     plus: #username
-    analytics: UA-5671021-3
-    verify: 
-    ad-client: 
-    ad-slot: 
-  bing-verify: 
-  github: alkamid
-  stackoverflow: #http://stackoverflow.com/users/123456/username
-  linkedin: #username
+    analytics: #UA-5671021-3
+    verify:
+    ad-client:
+    ad-slot:
+  bing-verify:
+  github: soumya997
+  stackoverflow: https://stackoverflow.com/users/12568833/soumyadip-sarkar#http://stackoverflow.com/users/123456/username
+  linkedin: soumyadip-sarkar-173901183
   instagram: #username
   lastfm: #username
   tumblr: #username
@@ -65,7 +65,7 @@ owner:
   foursquare: #username
   steam: #username
   dribbble: #username
-  youtube: #username
+  youtube: UCej1NaGtqV5vBFYtMgZAGdg
   soundcloud: #username
   weibo: #username
   flickr: #username
@@ -78,11 +78,7 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 defaults:
   -
     scope:
-      path: _posts/en
+      path: _posts
     values:
-      lang: en
-  -
-    scope:
-      path: _posts/pl
-    values:
-      lang: pl
+
+
