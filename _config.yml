@@ -56,7 +56,7 @@ owner:
     ad-slot:
   bing-verify:
   github: soumya997
-  stackoverflow: https://stackoverflow.com/users/12568833/soumyadip-sarkar#http://stackoverflow.com/users/123456/username
+  stackoverflow: https://stackoverflow.com/users/12568833/soumyadip-sarkar
   linkedin: soumyadip-sarkar-173901183
   instagram: #username
   lastfm: #username
@@ -77,8 +77,9 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 defaults:
   -
-    scope:
-      path: _posts
+     scope:
+      path: _posts/en
     values:
+      lang: en
 
 
